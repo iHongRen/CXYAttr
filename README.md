@@ -27,7 +27,7 @@
 
 **效果：**  
 
-![](/screenshots/example.png)  
+![](/screenshots/example.png =335)  
 
 
 
