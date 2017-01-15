@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CXYAttr : NSObject
+
+
 @property (nonatomic, strong, readonly) NSMutableAttributedString *attr;
 
 - (instancetype)initWithString:(NSString*)s;
@@ -17,8 +19,11 @@
 //拼接字符串
 - (CXYAttr* (^)(NSString*))append;
 
-//
+//区间
 - (CXYAttr* (^)(NSRange))range;
+
+//指定字符串
+- (CXYAttr* (^)(NSString*))only;
 
 //字体颜色
 - (CXYAttr* (^)(UIColor*))color;
@@ -39,21 +44,21 @@
 - (CXYAttr* (^)(UIFont*))fontName;
 
 //删除线风格
-- (CXYAttr* (^)(NSInteger))strikethroughStyle;
+- (CXYAttr* (^)(NSUnderlineStyle))strikethroughStyle;
 
 //删除线颜色
 - (CXYAttr* (^)(UIColor*))strikethroughColor;
 
 //下划线风格
-- (CXYAttr* (^)(NSInteger))underlineStyle;
+- (CXYAttr* (^)(NSUnderlineStyle))underlineStyle;
 
 //下划线颜色
 - (CXYAttr* (^)(UIColor*))underlineColor;
 
-//边框宽度
+//笔画宽度
 - (CXYAttr* (^)(NSInteger))strokeWidth;
 
-//边框颜色
+//笔画颜色
 - (CXYAttr* (^)(UIColor*))strokeColor;
 
 //字符间距
@@ -75,12 +80,17 @@
 - (CXYAttr* (^)(NSString*))linked;
 - (CXYAttr*)link;
 
+//字形倾斜度
+- (CXYAttr* (^)(CGFloat))obliqueness;
 
 //设置文本附件，图文混排
 - (CXYAttr* (^)(NSTextAttachment*))attachment;
 
 //段落风格
 - (CXYAttr* (^)(NSParagraphStyle*))paragraphStyle;
+
+//行间距
+- (CXYAttr* (^)(CGFloat))lineSpacing;
 
 #pragma mark - color category
 - (CXYAttr*)red;
@@ -99,3 +109,7 @@
 - (CXYAttr*)cyan;
 - (CXYAttr*)magenta;
 @end
+
+static inline CXYAttr* AS(NSString* s) {
+    return [[CXYAttr alloc] initWithString:s];
+}

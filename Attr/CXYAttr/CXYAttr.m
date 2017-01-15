@@ -12,6 +12,7 @@
 @property (nonatomic, strong, readwrite) NSMutableAttributedString *attr;
 @property (nonatomic, copy) NSString *string;
 @property (nonatomic, assign) NSRange rangex;
+
 @end
 @implementation CXYAttr
 
@@ -40,17 +41,27 @@
     };
 }
 
-- (CXYAttr* (^)(NSRange))range {
-    return ^CXYAttr* (NSRange c){
-
-        NSRange rg = NSMakeRange(self.attr.length-self.rangex.length, self.rangex.length);
-        NSDictionary *atrs = [self.attr attributesAtIndex:rg.location effectiveRange:&rg];
-        for (NSString *name in atrs.allKeys) {
-            [self.attr removeAttribute:name range:NSMakeRange(self.attr.length-self.rangex.length, self.rangex.length)];
+- (CXYAttr* (^)(NSString*))only {
+    return ^CXYAttr* (NSString *s){
+        NSRange r = [self.string rangeOfString:s];
+        if (r.location == NSNotFound) {
+            NSString *e =  [NSString stringWithFormat:@"CXYAttr: only(%@) not found in【%@】",s,self.string];
+            NSAssert(NO,e);
         }
-        
-        self.rangex = NSMakeRange(self.attr.length-self.rangex.length+c.location, c.length);
-        [self.attr setAttributes:atrs range:self.rangex];
+        return self.range(r);
+    };
+}
+
+//区间
+- (CXYAttr* (^)(NSRange))range {
+    return ^CXYAttr* (NSRange r){
+        NSUInteger length = self.string.length;
+        if (r.location != NSNotFound && r.location < length && r.length <= length) {
+            self.rangex = NSMakeRange(self.attr.length-length + r.location, r.length);
+        } else {
+            NSString *e = [NSString stringWithFormat:@"CXYAttr: rang(%@,%@) is beyond bounds for 【%@】",@(r.location),@(r.length),self.string];
+            NSAssert(NO, e);
+        }
         return self;
     };
 }
@@ -104,8 +115,8 @@
 }
 
 //删除线风格
-- (CXYAttr* (^)(NSInteger))strikethroughStyle {
-    return ^CXYAttr* (NSInteger i){
+- (CXYAttr* (^)(NSUnderlineStyle))strikethroughStyle {
+    return ^CXYAttr* (NSUnderlineStyle i){
         [self attr:@{NSStrikethroughStyleAttributeName:@(i)}];
         return self;
     };
@@ -118,10 +129,9 @@
         return self;
     };
 }
-
 //下划线风格
-- (CXYAttr* (^)(NSInteger))underlineStyle {
-    return ^CXYAttr* (NSInteger i){
+- (CXYAttr* (^)(NSUnderlineStyle))underlineStyle {
+    return ^CXYAttr* (NSUnderlineStyle i){
         [self attr:@{NSUnderlineStyleAttributeName:@(i)}];
         return self;
     };
@@ -135,7 +145,7 @@
     };
 }
 
-//边框宽度
+//笔画宽度
 - (CXYAttr* (^)(NSInteger))strokeWidth {
     return ^CXYAttr* (NSInteger i){
         [self attr:@{NSStrokeWidthAttributeName:@(i)}];
@@ -143,7 +153,7 @@
     };
 }
 
-//边框颜色
+//笔画颜色
 - (CXYAttr* (^)(UIColor*))strokeColor {
     return ^CXYAttr* (UIColor* c){
         [self attr:@{NSStrokeColorAttributeName:c}];
@@ -204,6 +214,14 @@
     };
 }
 
+//字形倾斜度
+- (CXYAttr* (^)(CGFloat))obliqueness {
+    return ^CXYAttr* (CGFloat f){
+        [self attr:@{NSObliquenessAttributeName:@(f)}];
+        return self;
+    };
+}
+
 //设置文本附件，图文混排
 - (CXYAttr* (^)(NSTextAttachment*))attachment {
     return ^CXYAttr* (NSTextAttachment *p){
@@ -220,6 +238,15 @@
     };
 }
 
+//行间距
+- (CXYAttr* (^)(CGFloat))lineSpacing {
+    return ^CXYAttr* (CGFloat f){
+        NSMutableParagraphStyle *p = [[NSMutableParagraphStyle alloc] init];
+        p.lineSpacing = f;
+        [self attr:@{NSParagraphStyleAttributeName:p}];
+        return self;
+    };
+}
 
 #pragma mark - color category
 - (CXYAttr*)red {

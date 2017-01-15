@@ -14,7 +14,6 @@
 		741F92101E275435005B917E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 741F920F1E275435005B917E /* Assets.xcassets */; };
 		741F92131E275435005B917E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741F92111E275435005B917E /* LaunchScreen.storyboard */; };
 		741F92481E292C8A005B917E /* CXYAttr.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F92451E292C8A005B917E /* CXYAttr.m */; };
-		741F92491E292C8A005B917E /* NSString+CXYAttr.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F92471E292C8A005B917E /* NSString+CXYAttr.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +29,6 @@
 		741F92141E275435005B917E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		741F92441E292C8A005B917E /* CXYAttr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXYAttr.h; sourceTree = "<group>"; };
 		741F92451E292C8A005B917E /* CXYAttr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXYAttr.m; sourceTree = "<group>"; };
-		741F92461E292C8A005B917E /* NSString+CXYAttr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXYAttr.h"; sourceTree = "<group>"; };
-		741F92471E292C8A005B917E /* NSString+CXYAttr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXYAttr.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +88,6 @@
 			children = (
 				741F92441E292C8A005B917E /* CXYAttr.h */,
 				741F92451E292C8A005B917E /* CXYAttr.m */,
-				741F92461E292C8A005B917E /* NSString+CXYAttr.h */,
-				741F92471E292C8A005B917E /* NSString+CXYAttr.m */,
 			);
 			path = CXYAttr;
 			sourceTree = "<group>";
@@ -168,7 +163,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				741F92491E292C8A005B917E /* NSString+CXYAttr.m in Sources */,
 				741F920B1E275435005B917E /* ViewController.m in Sources */,
 				741F92081E275435005B917E /* AppDelegate.m in Sources */,
 				741F92051E275434005B917E /* main.m in Sources */,
