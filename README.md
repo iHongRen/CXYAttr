@@ -27,7 +27,11 @@
 
 **效果：**  
 
-![](./screenshots/example.png =335x667)  
+```
+<img src="/screenshots/example.png" style="zoom:50%" />
+```
+
+  
 
 
 
