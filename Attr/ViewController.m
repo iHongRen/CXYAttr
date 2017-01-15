@@ -18,11 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
     [self test];
 }
 
 - (void)test {
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectInset(self.view.bounds, 30, 30)];
+
     l.numberOfLines = 0;
     [self.view addSubview:l];
     
