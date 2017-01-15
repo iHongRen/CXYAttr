@@ -27,7 +27,7 @@
 
 效果：  
 
-<img src="screenshots/example.png" width='335' height='667' />
+<img src="screenshots/example.png" width='375' height='667' />
 
 
 
