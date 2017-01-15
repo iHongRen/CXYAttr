@@ -18,7 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self test];
+}
+
+- (void)test {
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectInset(self.view.bounds, 30, 30)];
     l.numberOfLines = 0;
     [self.view addSubview:l];
@@ -35,7 +38,5 @@
     .append(@"\n\n")
     .append(@"壮志餐饥胡虏肉，谈笑渴饮匈奴血").fontName([UIFont fontWithName:@"STHeitiSC-Medium" size:20]).red.only(@"胡虏肉").strikethroughStyle(1).only(@"匈奴血").strokeColor([UIColor greenColor]).strokeWidth(5)
     .attr;
-    
 }
-
 @end
