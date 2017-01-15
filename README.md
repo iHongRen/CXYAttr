@@ -27,7 +27,7 @@
 
 效果：  
 
-<img src="screenshots/example.png" style="zoom:50%" />
+<img src="screenshots/example.png" width='335' height='667' />
 
 
 
