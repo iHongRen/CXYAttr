@@ -27,7 +27,7 @@
 
 **效果：**  
 
-![](/screenshots/example.png =335)  
+![](./screenshots/example.png =335x667)  
 
 
 
