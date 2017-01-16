@@ -5,6 +5,12 @@
 
 **使用：**
 
+以**AS()**函数开始，**attr**方法结束。
+
+
+
+**示例：**
+
 ```objective-c
 - (void)test {
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectInset(self.view.bounds, 30, 30)];
